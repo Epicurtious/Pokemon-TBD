@@ -79,7 +79,7 @@ static const u8 sFlyDescription[] = _(
 
 static const u8 sBindDescription[] = _(
     "Binds and squeezes the foe\n"
-    "for 2 to 5 turns.");
+    "for 4 to 5 turns.");
 
 static const u8 sSlamDescription[] = _(
     "Slams the foe with a long\n"
@@ -331,7 +331,7 @@ static const u8 sDragonRageDescription[] = _(
 
 static const u8 sFireSpinDescription[] = _(
     "Traps the foe in a ring of\n"
-    "fire for 2 to 5 turns.");
+    "fire for 4 to 5 turns.");
 
 static const u8 sThunderShockDescription[] = _(
     "An electrical attack that\n"
@@ -511,7 +511,7 @@ static const u8 sWaterfallDescription[] = _(
 
 static const u8 sClampDescription[] = _(
     "Traps and squeezes the\n"
-    "foe for 2 to 5 turns.");
+    "foe for 4 to 5 turns.");
 
 static const u8 sSwiftDescription[] = _(
     "Sprays star-shaped rays\n"
@@ -999,7 +999,7 @@ static const u8 sRockSmashDescription[] = _(
 
 static const u8 sWhirlpoolDescription[] = _(
     "Traps and hurts the foe in\n"
-    "a whirlpool for 2 to 5 turns.");
+    "a whirlpool for 4 to 5 turns.");
 
 static const u8 sBeatUpDescription[] = _(
     "Summons party POKéMON to\n"
@@ -1311,7 +1311,7 @@ static const u8 sSkyUppercutDescription[] = _(
 
 static const u8 sSandTombDescription[] = _(
     "Traps and hurts the foe in\n"
-    "quicksand for 2 to 5 turns.");
+    "quicksand for 4 to 5 turns.");
 
 static const u8 sSheerColdDescription[] = _(
     "A chilling attack that\n"
@@ -1419,7 +1419,7 @@ static const u8 sPsychoBoostDescription[] = _(
 
 static const u8 sHauntDescription[] = _(
     "Haunts the opponent, \n"
-    "trappingfor 2 to 5 turns");
+    "trappingfor 4 to 5 turns");
 
 // MOVE_NONE is ignored in this table. Make sure to always subtract 1 before getting the right pointer.
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
