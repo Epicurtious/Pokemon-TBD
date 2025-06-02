@@ -2769,6 +2769,7 @@ static const u16 sMisdreavusLevelUpLearnset[] = {
 
 static const u16 sUnownLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_HIDDEN_POWER),
+    LEVEL_UP_MOVE( 1, MOVE_HAUNT),
     LEVEL_UP_END
 };
 

@@ -145,6 +145,7 @@ static const u8 sText_PkmnTrappedInVortex[] = _("{B_DEF_NAME_WITH_PREFIX} was tr
 static const u8 sText_PkmnTrappedBySandTomb[] = _("{B_DEF_NAME_WITH_PREFIX} was trapped\nby SAND TOMB!");
 static const u8 sText_PkmnWrappedBy[] = _("{B_DEF_NAME_WITH_PREFIX} was WRAPPED by\n{B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnClamped[] = _("{B_ATK_NAME_WITH_PREFIX} CLAMPED\n{B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_PkmnHaunted[] = _("{B_DEF_NAME_WITH_PREFIX} was HAUNTED by\n{B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnHurtBy[] = _("{B_ATK_NAME_WITH_PREFIX} is hurt\nby {B_BUFF1}!");
 static const u8 sText_PkmnFreedFrom[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nfrom {B_BUFF1}!");
 static const u8 sText_PkmnCrashed[] = _("{B_ATK_NAME_WITH_PREFIX} kept going\nand crashed!");
@@ -885,6 +886,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT - BATTLESTRINGS_TABLE_ST
     [STRINGID_PKMNBOXLANETTESPCFULL - BATTLESTRINGS_TABLE_START] = gText_PkmnTransferredLanettesPCBoxFull,
     [STRINGID_TRAINER1WINTEXT - BATTLESTRINGS_TABLE_START] = sText_Trainer1WinText,
     [STRINGID_TRAINER2WINTEXT - BATTLESTRINGS_TABLE_START] = sText_Trainer2WinText,
+    [STRINGID_PKMNHAUNTED - BATTLESTRINGS_TABLE_START] = sText_PkmnHaunted,
 };
 
 const u16 gMissStringIds[] =
@@ -1037,12 +1039,13 @@ const u16 gFirstTurnOfTwoStringIds[] =
 // Index copied from move's index in gTrappingMoves
 const u16 gWrappedStringIds[NUM_TRAPPING_MOVES] =
 {
-    STRINGID_PKMNSQUEEZEDBYBIND,   // MOVE_BIND
-    STRINGID_PKMNWRAPPEDBY,        // MOVE_WRAP
-    STRINGID_PKMNTRAPPEDINVORTEX,  // MOVE_FIRE_SPIN
-    STRINGID_PKMNCLAMPED,          // MOVE_CLAMP
-    STRINGID_PKMNTRAPPEDINVORTEX,  // MOVE_WHIRLPOOL
-    STRINGID_PKMNTRAPPEDBYSANDTOMB // MOVE_SAND_TOMB
+    STRINGID_PKMNSQUEEZEDBYBIND,    // MOVE_BIND
+    STRINGID_PKMNWRAPPEDBY,         // MOVE_WRAP
+    STRINGID_PKMNTRAPPEDINVORTEX,   // MOVE_FIRE_SPIN
+    STRINGID_PKMNCLAMPED,           // MOVE_CLAMP
+    STRINGID_PKMNTRAPPEDINVORTEX,   // MOVE_WHIRLPOOL
+    STRINGID_PKMNTRAPPEDBYSANDTOMB, // MOVE_SAND_TOMB
+    STRINGID_PKMNHAUNTED            // MOVE_HAUNT
 };
 
 const u16 gMistUsedStringIds[] =
@@ -1261,6 +1264,7 @@ const u16 gTrappingMoves[NUM_TRAPPING_MOVES + 1] =
     MOVE_CLAMP,
     MOVE_WHIRLPOOL,
     MOVE_SAND_TOMB,
+    MOVE_HAUNT,
     0xFFFF // Never read
 };
 
@@ -1557,7 +1561,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
         .bgColor = 14,
         .shadowColor = 11,
     },
-    [B_WIN_DUMMY] = {
+    [B_WIN_PSS_ICON] = {
         .fillValue = PIXEL_FILL(0xE),
         .fontId = FONT_NORMAL,
         .x = 0,
@@ -1797,7 +1801,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Arena[] =
         .bgColor = 14,
         .shadowColor = 11,
     },
-    [B_WIN_DUMMY] = {
+    [B_WIN_PSS_ICON] = {
         .fillValue = PIXEL_FILL(0xE),
         .fontId = FONT_NORMAL,
         .x = 0,

@@ -1153,7 +1153,7 @@ static void Cmd_accuracycheck(void)
             calc = (calc * 130) / 100; // 1.3 compound eyes boost
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SAND_VEIL && gBattleWeather & B_WEATHER_SANDSTORM)
             calc = (calc * 80) / 100; // 1.2 sand veil loss
-        if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_TYPE_PHYSICAL(type))
+        if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_MOVE_PHYSICAL(move))
             calc = (calc * 80) / 100; // 1.2 hustle loss
 
         if (gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY)
@@ -1935,7 +1935,7 @@ static void Cmd_datahpupdate(void)
                 // Note: While physicalDmg/specialDmg below are only distinguished between for Counter/Mirror Coat, they are
                 //       used in combination as general damage trackers for other purposes. specialDmg is additionally used
                 //       to help determine if a fire move should defrost the target.
-                if (IS_TYPE_PHYSICAL(moveType) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE) && gCurrentMove != MOVE_PAIN_SPLIT)
+                if (IS_MOVE_PHYSICAL(gCurrentMove) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE) && gCurrentMove != MOVE_PAIN_SPLIT)
                 {
                     // Record physical damage/attacker for Counter
                     gProtectStructs[gActiveBattler].physicalDmg = gHpDealt;
@@ -1951,7 +1951,7 @@ static void Cmd_datahpupdate(void)
                         gSpecialStatuses[gActiveBattler].physicalBattlerId = gBattlerTarget;
                     }
                 }
-                else if (!IS_TYPE_PHYSICAL(moveType) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE))
+                else if (IS_MOVE_SPECIAL(gCurrentMove) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE))
                 {
                     // Record special damage/attacker for Mirror Coat
                     gProtectStructs[gActiveBattler].specialDmg = gHpDealt;
@@ -8911,12 +8911,12 @@ static void Cmd_recoverbasedonsunlight(void)
 
 static void Cmd_hiddenpowercalc(void)
 {
-    u8 powerBits = ((gBattleMons[gBattlerAttacker].hpIV & 2) >> 1)
-                 | ((gBattleMons[gBattlerAttacker].attackIV & 2) << 0)
-                 | ((gBattleMons[gBattlerAttacker].defenseIV & 2) << 1)
-                 | ((gBattleMons[gBattlerAttacker].speedIV & 2) << 2)
-                 | ((gBattleMons[gBattlerAttacker].spAttackIV & 2) << 3)
-                 | ((gBattleMons[gBattlerAttacker].spDefenseIV & 2) << 4);
+    // u8 powerBits = ((gBattleMons[gBattlerAttacker].hpIV & 2) >> 1)
+    //              | ((gBattleMons[gBattlerAttacker].attackIV & 2) << 0)
+    //              | ((gBattleMons[gBattlerAttacker].defenseIV & 2) << 1)
+    //              | ((gBattleMons[gBattlerAttacker].speedIV & 2) << 2)
+    //              | ((gBattleMons[gBattlerAttacker].spAttackIV & 2) << 3)
+    //              | ((gBattleMons[gBattlerAttacker].spDefenseIV & 2) << 4);
 
     u8 typeBits  = ((gBattleMons[gBattlerAttacker].hpIV & 1) << 0)
                  | ((gBattleMons[gBattlerAttacker].attackIV & 1) << 1)
@@ -8925,7 +8925,7 @@ static void Cmd_hiddenpowercalc(void)
                  | ((gBattleMons[gBattlerAttacker].spAttackIV & 1) << 4)
                  | ((gBattleMons[gBattlerAttacker].spDefenseIV & 1) << 5);
 
-    gDynamicBasePower = (40 * powerBits) / 63 + 30;
+    // gDynamicBasePower = (40 * powerBits) / 63 + 30;
 
     // Subtract 3 instead of 1 below because 2 types are excluded (TYPE_NORMAL and TYPE_MYSTERY)
     // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
