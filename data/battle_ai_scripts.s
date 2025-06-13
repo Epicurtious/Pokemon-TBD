@@ -457,23 +457,7 @@ AI_CBM_Attract:
 	if_status2 AI_TARGET, STATUS2_INFATUATION, Score_Minus10
 	get_ability AI_TARGET
 	if_equal ABILITY_OBLIVIOUS, Score_Minus10
-	get_gender AI_USER
-	if_equal MON_MALE, AI_CBM_Attract_CheckIfTargetIsFemale
-	if_equal MON_FEMALE, AI_CBM_Attract_CheckIfTargetIsMale
 	goto Score_Minus10
-
-AI_CBM_Attract_CheckIfTargetIsFemale:
-	get_gender AI_TARGET
-	if_equal MON_FEMALE, AI_CBM_Attract_End
-	goto Score_Minus10
-
-AI_CBM_Attract_CheckIfTargetIsMale:
-	get_gender AI_TARGET
-	if_equal MON_MALE, AI_CBM_Attract_End
-	goto Score_Minus10
-
-AI_CBM_Attract_End:
-	end
 
 AI_CBM_Safeguard:
 	if_side_affecting AI_USER, SIDE_STATUS_SAFEGUARD, Score_Minus8
