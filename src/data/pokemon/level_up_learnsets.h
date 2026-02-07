@@ -2634,7 +2634,6 @@ static const u16 sAipomLevelUpLearnset[] = {
 };
 
 static const u16 sSunkernLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_SANDSTORM),
     LEVEL_UP_MOVE( 1, MOVE_ABSORB),
     LEVEL_UP_MOVE( 6, MOVE_GROWTH),
     LEVEL_UP_MOVE(13, MOVE_MEGA_DRAIN),
