@@ -1350,6 +1350,7 @@ static void Task_NewGameBirchSpeech_ThisIsAPokemon(u8 taskId)
         StringExpandPlaceholders(gStringVar4, gText_ThisIsAPokemon);
         AddTextPrinterWithCallbackForMessage(TRUE, NewGameBirchSpeech_WaitForThisIsPokemonText);
         sBirchSpeechMainTaskId = taskId;
+        gSaveBlock2Ptr->playerGender = 1;
     }
 }
 
@@ -1359,7 +1360,7 @@ static void Task_NewGameBirchSpeech_MainSpeech(u8 taskId)
     {
         StringExpandPlaceholders(gStringVar4, gText_Birch_MainSpeech);
         AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_AndYouAre;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
     }
 }
 
@@ -1600,7 +1601,7 @@ static void Task_NewGameBirchSpeech_StartNamingScreen(u8 taskId)
     {
         FreeAllWindowBuffers();
         FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
-        NewGameBirchSpeech_SetDefaultPlayerName(Random() % NUM_PRESET_NAMES);
+        NewGameBirchSpeech_SetDefaultPlayerName(18); // Default name is Lucy
         DestroyTask(taskId);
         DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_NewGameBirchSpeech_ReturnFromNamingScreen);
     }
@@ -1637,7 +1638,7 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
         case MENU_B_PRESSED:
         case 1:
             PlaySE(SE_SELECT);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
     }
 }
 
